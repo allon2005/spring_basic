@@ -1,5 +1,7 @@
 package springBasic1;
-
+/*
+ *Dependency injection of primitives 
+ */
 public class Car {
 	/* we can say that "car" is dependent on "weight" -->this is for primitive
 	 * we inject the "weight" value through the xml file
@@ -9,11 +11,6 @@ public class Car {
 	private String brand; 
 	private String color;	
 	private float price; 
-
-	/* we say that "car" is dependent on "Door" -->this is for object
-	 * we inject the "Door" object value through the xml file
-	 */
-	private Door door; 
 
 	public Car(String type)
 	{
