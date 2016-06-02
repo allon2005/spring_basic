@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="car" class="springBasic1.Car"> <!-- define a bean, assign "id", link to the class -->
+		<property name="weight" value="3500" /> <!-- -for weight setter injection -->
+		<constructor-arg  value="SUV" />  
+	</bean>
+	
+	<bean id="car1" class="springBasic1.Car"> 
+		<property name="weight" value="3500" />
+		<constructor-arg type="java.lang.String" value="SUV" />  <!-- add type to the constructor-arg -->
+		<constructor-arg type="java.lang.String" value="GMC"  />  
+		<constructor-arg type="java.lang.String" value="Red"  />  
+	</bean>
+	
+	<bean id="car2" class="springBasic1.Car"> 
+		<property name="weight" value="3500" />
+		<constructor-arg index="0" type="java.lang.String" value="SUV" />  <!-- use index to precisely allocate the constructor-arg -->
+		<constructor-arg index="1" type="java.lang.String" value="GMC" />  
+		<constructor-arg index="2" type="float" value="39999.99" />  
+	</bean>
+	
+	<!-- 
+	1.when defining the constructor-arg, need to avoid ambiguity. If the constructor-arg(s) within one bean definition
+	  can be possibly used by multiple constructors, this will cause ambiguity since one bean should only invoke one
+	  constructor.
+	2. we have "car", "car1" and "car2" defined here. In "MakingCar.java", we only used "car" and "car1". However, when
+	   the beanFactory starts, it will initiate all the beans defined in this xml configuration file including "car", "car1" and "car2".
+	So, if you don't use that bean, you should not define it.
+	3. General rule: constructor injection usually is used for mandatory variables. Setters are for optional variables.
+	   However, setters are preferred than constructor since they are more flexible.
+	 -->
+
+
+
+</beans>   					   
+
+
+
+
