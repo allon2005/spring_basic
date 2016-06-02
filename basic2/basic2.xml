@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="car" class="springBasic2.Car"> 
+	  <property name="frontDoor" ref="frontDoor" />  
+	  <property name="rearDoor" ref="rearDoor" />  
+	  
+	<!-- "frontDoor/rearDoor" is member variable in "Car". We can use setter to inject the object into "car" -->
+	<!--  "ref" here will point to a defined bean in this xml file. So, when BeanFactory initiates all the beans,
+	it will not only initiate the "Car" object, but also the objects of "ref".	
+	 -->
+	
+	
+	
+	</bean>
+	
+	<!-- two beans are created for the Door objects
+	we can use these beans to create Door objects in "MakingCar.java" as before.
+	However, we will have more codes in "MakingCar.java (which is not necessary if we use dependency injection since "Door" is inside the "Car" object
+	 -->
+	<bean id="frontDoor" class="springBasic2.Door" >
+	   <property name="type" value="front passenger door" />
+	   <property name="color" value="grey" />
+	   <property name="weight" value="210.0" />
+	</bean>
+	
+	<bean id="rearDoor" class="springBasic2.Door" >
+	   <property name="type" value="rear right door" />
+	   <property name="color" value="grey" />
+	   <property name="weight" value="250.0" />
+	</bean>
+	
+
+
+
+</beans>   					   
+
+
+
+
