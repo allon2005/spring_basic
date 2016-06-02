@@ -4,23 +4,23 @@ public class Car {
 	/* we can say that "car" is dependent on "weight" -->this is for primitive
 	 * we inject the "weight" value through the xml file
 	 */
-	private String type;
-	private String brand; //use constructor for injection
-	private int weight;   // use setter for injection
+	private int weight;   // use setter for injection; 
+	private String type; //The rest use constructor for injection
+	private String brand; 
 	private String color;	
 	private float price; 
 
 	/* we say that "car" is dependent on "Door" -->this is for object
 	 * we inject the "Door" object value through the xml file
 	 */
-	private Door door;  //	
+	private Door door; 
 
 	public Car(String type)
 	{
 		System.out.println("this is the car type constructor " + this.toString());
 		this.type = type;
 	}
-	
+
 	public Car(String type, String brand, String color)
 	{
 		System.out.println("this is the car type/brand/color constructor " + this.toString());
@@ -36,7 +36,7 @@ public class Car {
 		this.brand = brand;
 		this.price = price;
 	}
-	
+
 	public Car(String type,String brand,String color, float price) 
 	{
 		System.out.println("this is the car type/brand/color/price constructor " + this.toString());
@@ -45,7 +45,7 @@ public class Car {
 		this.color = color;
 		this.price = price;
 	}
-	
+
 	public int getWeight()
 	{
 		System.out.println("this is the car weight getter");
@@ -69,11 +69,7 @@ public class Car {
 }
 // use setter or constructor to instantiate a class variable.
 /*
-	   	  ===>if we have both constructor and setter in the class, both of them will be executed. The constructor
-	   	  will always be executed before the setter no matter the order in this class and the order in xml file
-	   	  in the class ===>so, the final value for "weight" is using the value from the setter!!!
-
-
-	   	  2.4. the getter is not being called!
-
+if we have both constructor and setter in the class, both of them will be executed. The constructor
+will always be executed before the setter no matter the order in this class and the order in xml file
+in the class ===>so, the final value for "weight" is using the value from the setter!!!
  */
