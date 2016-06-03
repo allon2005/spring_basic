@@ -33,8 +33,9 @@ public class Car {
 
 	public void getCarInfo()
 	{
-		frontDoor.getDoorInfo();
-		rearDoor.getDoorInfo();
+		getFrontDoor().getDoorInfo();
+		System.out.println();
+		getRearDoor().getDoorInfo();
 	}
 
 }
