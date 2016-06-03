@@ -26,9 +26,9 @@ public class Door {
 	
 	public void getDoorInfo()
 	{
-		System.out.println("this is a [" + type + "]");
-		System.out.println("the color of the door is :" + color);
-		System.out.println("the weight of the door is :" + weight);
+		System.out.println("this is a [" + getType() + "]");
+		System.out.println("the color of the door is :" + getColor());
+		System.out.println("the weight of the door is :" + getWeight());
 	}
 	
 

@@ -9,6 +9,18 @@ public class Car {
 	 */
 	private Door frontDoor; 
 	private Door rearDoor;   
+	
+	private AutoStarter autoStarter;  //to demonstrate the inner bean
+
+
+	public AutoStarter getAutoStarter() {
+		return autoStarter;
+	}
+
+
+	public void setAutoStarter(AutoStarter autoStarter) {
+		this.autoStarter = autoStarter;
+	}
 
 
 	public Door getFrontDoor() {
@@ -36,6 +48,8 @@ public class Car {
 		getFrontDoor().getDoorInfo();
 		System.out.println();
 		getRearDoor().getDoorInfo();
+		System.out.println();
+		getAutoStarter().getRangeInfo();
 	}
 
 }

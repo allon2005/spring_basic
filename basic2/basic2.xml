@@ -13,7 +13,12 @@
 	<!--  "ref" here will point to a defined bean in this xml file. So, when BeanFactory initiates all the beans,
 	it will not only initiate the "Car" object, but also the objects of "ref".	
 	 -->
-	
+	 
+	<property name="autoStarter">
+	   <bean class="springBasic2.AutoStarter">  <!-- -inner bean, no need to have the "id" -->
+	     <property name="range" value="200" />
+	   </bean>
+	</property>
 	
 	
 	</bean>
@@ -37,7 +42,15 @@
 
 
 
-</beans>   					   
+</beans>   		
+
+<!-- -when we use inner bean?
+If an object (autoStarter here) is specific to another object (this type of car) and no other place will use the
+specific object, we can put the specific object as an inner bean of another object. There is no need to have the id for 
+inner bean (but you can add one if you want to). ====>there is no performance advantage compared with defining the
+specific object outside of the other object bean. This just improves the code to be more concise by grouping info together.
+
+ -->			   
 
 
 
