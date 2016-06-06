@@ -3,14 +3,69 @@ package springBasic2;
  * Dependency injection of object
  */
 public class Car {
-	
+
 	/* we say that "car" is dependent on "Door" -->this is for object
 	 * we inject the "Door" object value through the xml file
 	 */
-	private Door frontDoor; 
-	private Door rearDoor;   
+	private String idrefCheck; //the only purpose of this string is to pass "idref"
+	
+	public String getIdrefCheck() {
+		return idrefCheck;
+	}
+
+
+	public void setIdrefCheck(String idrefCheck) {
+		this.idrefCheck = idrefCheck;
+	}
+
+
+
+	private Door frontDoorR; 
+	private Door rearDoorR;   
+
+	private Door frontDoorL; 
+	private Door rearDoorL; 
 	
 	private AutoStarter autoStarter;  //to demonstrate the inner bean
+	
+	public Door getFrontDoorR() {
+		return frontDoorR;
+	}
+
+
+	public void setFrontDoorR(Door frontDoorR) {
+		this.frontDoorR = frontDoorR;
+	}
+
+
+	public Door getRearDoorR() {
+		return rearDoorR;
+	}
+
+
+	public void setRearDoorR(Door rearDoorR) {
+		this.rearDoorR = rearDoorR;
+	}
+
+
+	public Door getFrontDoorL() {
+		return frontDoorL;
+	}
+
+
+	public void setFrontDoorL(Door frontDoorL) {
+		this.frontDoorL = frontDoorL;
+	}
+
+
+	public Door getRearDoorL() {
+		return rearDoorL;
+	}
+
+
+	public void setRearDoorL(Door rearDoorL) {
+		this.rearDoorL = rearDoorL;
+	}
 
 
 	public AutoStarter getAutoStarter() {
@@ -23,31 +78,16 @@ public class Car {
 	}
 
 
-	public Door getFrontDoor() {
-		return frontDoor;
-	}
-
-
-	public void setFrontDoor(Door frontDoor) {
-		this.frontDoor = frontDoor;
-	}
-
-
-	public Door getRearDoor() {
-		return rearDoor;
-	}
-
-
-	public void setRearDoor(Door rearDoor) {
-		this.rearDoor = rearDoor;
-	}
-
 
 	public void getCarInfo()
 	{
-		getFrontDoor().getDoorInfo();
+		getFrontDoorR().getDoorInfo();
 		System.out.println();
-		getRearDoor().getDoorInfo();
+		getRearDoorR().getDoorInfo();
+		System.out.println();
+		getFrontDoorL().getDoorInfo();
+		System.out.println();
+		getRearDoorL().getDoorInfo();
 		System.out.println();
 		getAutoStarter().getRangeInfo();
 	}

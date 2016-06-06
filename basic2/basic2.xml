@@ -5,52 +5,119 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="car" class="springBasic2.Car"> 
-	  <property name="frontDoor" ref="frontDoor" />  
-	  <property name="rearDoor" ref="rearDoor" />  
-	  
-	<!-- "frontDoor/rearDoor" is member variable in "Car". We can use setter to inject the object into "car" -->
-	<!--  "ref" here will point to a defined bean in this xml file. So, when BeanFactory initiates all the beans,
-	it will not only initiate the "Car" object, but also the objects of "ref".	
-	 -->
-	 
-	<property name="autoStarter">
-	   <bean class="springBasic2.AutoStarter">  <!-- -inner bean, no need to have the "id" -->
-	     <property name="range" value="200" />
-	   </bean>
-	</property>
-	
-	
+	<!-- <bean id="car" class="springBasic2.Car" name="car-alias2"> --> <!-- this is another way to define alias -->
+
+	<bean id="car" class="springBasic2.Car">
+		<property name="frontDoorR" ref="frontDoorR" />
+		<property name="rearDoorR" ref="rearDoorR" />
+        <property name="frontDoorL" ref="frontDoorL" />
+		
+		<!-- "frontDoor/rearDoor" is member variable in "Car". We can use setter 
+			to inject the object into "car" -->
+		<!-- "ref" here will point to a defined bean in this xml file. So, when 
+			BeanFactory initiates all the beans, it will not only initiate the "Car" 
+			object, but also the objects of "ref". -->
+
+		<!-- this is not going to work for idref. "idref" is for vaidation, which passes a String (Bean's name"):
+			<property name="rearDoorL"> 
+			<idref bean="rearDoorL"/> 
+			</property> 
+           :-the above definition is equal to: 
+            <property name="rearDooL" value="rearDoorL"/> :- 
+            
+            -->
+            
+            <!--  this is not going to work, neither for idref (error: multiple properties defined for "frontDoorL")
+            <property name="frontDoorL" ref="frontDoorL" /> 
+            <property name="frontDoorL"> 
+            <idref bean="frontDoorL" 
+			/> </property> -->
+			
+		<property name="rearDoorL" ref="rearDoorL" /> 
+        <property name="idrefCheck"> <!-- must have a string variable in the calling class for "idref" -->
+        <idref bean="rearDoorL"/>
+        </property>
+			
+			<!-- this is the right  one for "idref"
+			the sole purpose of "idrefCheck" is to pass the bean "rearDoorL" into the class "Car" (the calling
+			class for string "idrefCheck". At deployment, system will validate if the bean "rearDoorL" exists or not.
+			If not existing, it will throw error!
+			-->
+
+		<property name="autoStarter">
+			<bean class="springBasic2.AutoStarter">  <!-- -inner bean, no need to have the "id" -->
+				<property name="range" value="200" />
+			</bean>
+		</property>
+
+
 	</bean>
-	
-	<!-- two beans are created for the Door objects
-	we can use these beans to create Door objects in "MakingCar.java" as before.
-	However, we will have more codes in "MakingCar.java (which is not necessary if we use dependency injection since "Door" is inside the "Car" object
-	 -->
-	<bean id="frontDoor" class="springBasic2.Door" >
-	   <property name="type" value="front passenger door" />
-	   <property name="color" value="grey" />
-	   <property name="weight" value="210.0" />
+
+	<!-- two beans are created for the Door objects we can use these beans to 
+		create Door objects in "MakingCar.java" as before. However, we will have 
+		more codes in "MakingCar.java (which is not necessary if we use dependency 
+		injection since "Door" is inside the "Car" object -->
+	<bean id="frontDoorR" class="springBasic2.Door">
+		<property name="type" value="front passenger door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="210.0" />
 	</bean>
-	
-	<bean id="rearDoor" class="springBasic2.Door" >
-	   <property name="type" value="rear right door" />
-	   <property name="color" value="grey" />
-	   <property name="weight" value="250.0" />
+
+	<bean id="rearDoorR" class="springBasic2.Door">
+		<property name="type" value="rear right door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="250.0" />
 	</bean>
-	
+
+	<bean id="frontDoorL" class="springBasic2.Door">
+		<property name="type" value="front driver door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="210.0" />
+		<!--  wrong usage of idref
+		<property name="weight">
+		<idref bean="frontDoorR"/> 
+		</property>
+		for idref: -wrong here !!! -see the above corrected one
+		We are passing another bean's name (frontDoorR) into the property "name". So, when creating this "frontDoorL" bean,
+		system will validate the name's property against the bean "frootDoorR" and use its info for this bean.
+		
+		-->
+	</bean>
+
+	<bean id="rearDoorL" class="springBasic2.Door">
+		<property name="type" value="rear left door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="250.0" />
+		<!--  wrong usage of idref
+		<property name="weight" >  -first: weight is not a string variable. Second, in bean "rearDoorL", no other bean "ref". So, no validation through "idref".
+		 <idref bean="rearDoorR"/>
+		</property>
+		-->
+	</bean>
+
+	<alias name="car" alias="car-alias" />
+	<!-- -define an alias for the "car" bean. We can use "car-alias" anywhere 
+		"car" works -->
 
 
 
-</beans>   		
+</beans>
 
-<!-- -when we use inner bean?
-If an object (autoStarter here) is specific to another object (this type of car) and no other place will use the
-specific object, we can put the specific object as an inner bean of another object. There is no need to have the id for 
-inner bean (but you can add one if you want to). ====>there is no performance advantage compared with defining the
-specific object outside of the other object bean. This just improves the code to be more concise by grouping info together.
+<!-- -when we use inner bean? If an object (autoStarter here) is specific 
+	to another object (this type of car) and no other place will use the specific 
+	object, we can put the specific object as an inner bean of another object. 
+	There is no need to have the id for inner bean (but you can add one if you 
+	want to). ====>there is no performance advantage compared with defining the 
+	specific object outside of the other object bean. This just improves the 
+	code to be more concise by grouping info together. -->
 
- -->			   
+<!-- why need to use alias see: http://stackoverflow.com/questions/13220919/spring-bean-alias-usage -->
+
+<!-- about idref see: 
+http://stackoverflow.com/questions/14607142/spring-idref-usage
+http://www.concretepage.com/spring/example_idref_spring
+https://technicalrecyclebin.wordpress.com/2014/09/04/idref-in-spring-what-is-the-purpose-of-tag-in-spring/
+ -->   
 
 
 
