@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="car" class="springBasic3.Car">
+		<property name="wheelList">
+			<list>
+				<ref bean="wheel1" />
+				<ref bean="wheel2" />
+				<ref bean="wheel3" />
+				<ref bean="wheel4" />
+			</list>
+		</property>
+		<!-- - inside the list, we can have as many "ref" as we can. They will 
+			be injected as a whole list into Car.java -->
+
+	</bean>
+
+	<bean name="wheel1" class="springBasic3.Wheel">
+		<property name="serialNum" value="1" />
+		<property name="brand" value="bridgeStone" />
+		<property name="size" value="6225/70R14" />
+	</bean>
+
+	<bean name="wheel2" class="springBasic3.Wheel">
+		<property name="serialNum" value="2" />
+		<property name="brand" value="bridgeStone" />
+		<property name="size" value="6225/70R14" />
+	</bean>
+
+	<bean name="wheel3" class="springBasic3.Wheel">
+		<property name="serialNum" value="3" />
+		<property name="brand" value="bridgeStone" />
+		<property name="size" value="6225/70R14" />
+	</bean>
+
+	<bean name="wheel4" class="springBasic3.Wheel">
+		<property name="serialNum" value="4" />
+		<property name="brand" value="bridgeStone" />
+		<property name="size" value="6225/70R14" />
+	</bean>
+
+
+
+</beans>
+
+
+
+
+
