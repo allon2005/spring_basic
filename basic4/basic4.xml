@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="car" class="springBasic4.Car" autowire="byName">
+		<!-- with autowire, this bean will automatically look for the beans which 
+			matches the variable name in the "Car.java". no need to add the property -->
+	</bean>
+
+	<bean id="carA" class="springBasic4.CarA" autowire="byType">
+
+		<!-- with autowire = "byType", this bean will automatically look for the 
+			beans which matches the type of the variable in the "CarA.java". no need 
+			to add the property -->
+
+	</bean>
+
+	<bean id="carB" class="springBasic4.CarB" autowire="constructor">
+
+		<!-- with autowire = "constructor", it is like the "byType" to look for 
+			the beans which matches the type (with constructor) of the variable in the 
+			"CarB.java". no need to add the property -->
+
+	</bean>
+
+
+	<bean id="frontDoorR" class="springBasic4.Door">
+		<property name="type" value="front passenger door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="210.0" />
+	</bean>
+
+	<bean id="rearDoorR" class="springBasic4.Door">
+		<property name="type" value="rear right door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="250.0" />
+	</bean>
+
+	<bean id="frontDoorL" class="springBasic4.Door">
+		<property name="type" value="front driver door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="210.0" />
+
+	</bean>
+
+	<bean id="rearDoorL" class="springBasic4.Door">
+		<property name="type" value="rear left door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="250.0" />
+	</bean>
+
+	<bean id="autoStarter" class="springBasic4.AutoStarter">
+		<property name="range" value="200" />
+	</bean>
+
+	<bean id="autoStarterB" class="springBasic4.AutoStarterB">
+		<property name="range" value="600" />
+	</bean>
+
+</beans>
+
+<!-- 
+
+    1. autowire="byName" in this xml file, we must define the beans with 
+	   the exactly variable names in the calling class. 
+	
+	2. if we use "autowire", 
+	the bean factory will autowire all the variables in the calling class. So, 
+	if no corresponding bean defined, a null pointer exception will be thrown. 
+	
+	3. autowire="byType". This one is good if the class only have one class variable. 
+	If multiple types exist, it will not work correctly. 
+	
+	4. autowire="constructor" is similar to "byType". Only one type!!!
+	
+	5*** autowire looks convenient. However, it can get messy if a large number of beans exist. 
+	
+	-->
+
+

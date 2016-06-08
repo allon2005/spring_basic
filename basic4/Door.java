@@ -1,4 +1,4 @@
-package springBasic2;
+package springBasic4;
 
 public class Door {
 	private String type; //front, back, driver-side, or passenger-side

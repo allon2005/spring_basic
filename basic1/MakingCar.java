@@ -3,6 +3,7 @@ package springBasic1;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.FileSystemResource;
 
@@ -35,7 +36,10 @@ public class MakingCar {
 	    System.out.println();
 	    Car newCar1 = (Car)context.getBean("car1");
 	    newCar1.getCarInfo();
-	    context = null;
+	    
+	    newCar = null;
+	    newCar1 = null;
+	    ((ConfigurableApplicationContext)context).close();
 	}
 
 }

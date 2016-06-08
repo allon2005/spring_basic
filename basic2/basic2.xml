@@ -38,10 +38,10 @@
         <idref bean="rearDoorL"/>
         </property>
 			
-			<!-- this is the right  one for "idref"
-			the sole purpose of "idrefCheck" is to pass the bean "rearDoorL" into the class "Car" (the calling
-			class for string "idrefCheck". At deployment, system will validate if the bean "rearDoorL" exists or not.
-			If not existing, it will throw error!
+		<!-- this is the right  one for "idref"
+		the sole purpose of "idrefCheck" is to pass the bean "rearDoorL" into the class "Car" (the calling
+		class for string "idrefCheck". At deployment, system will validate if the bean "rearDoorL" exists or not.
+		If not existing, it will throw error!
 			-->
 
 		<property name="autoStarter">
@@ -49,8 +49,6 @@
 				<property name="range" value="200" />
 			</bean>
 		</property>
-
-
 	</bean>
 
 	<!-- two beans are created for the Door objects we can use these beans to 

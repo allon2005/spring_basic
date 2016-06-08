@@ -1,32 +1,14 @@
-package springBasic2;
+package springBasic4;
 /*
- * Dependency injection of object
+ * autowire
  */
 public class Car {
-
-	/* we say that "car" is dependent on "Door" -->this is for object
-	 * we inject the "Door" object value through the xml file
-	 */
-	private String idrefCheck; //the only purpose of this string is to pass "idref"
-
-	public String getIdrefCheck() {
-		return idrefCheck;
-	}
-
-
-	public void setIdrefCheck(String idrefCheck) {
-		this.idrefCheck = idrefCheck;
-	}
-
-
 
 	private Door frontDoorR; 
 	private Door rearDoorR;   
 
 	private Door frontDoorL; 
 	private Door rearDoorL; 
-
-	private AutoStarter autoStarter;  //to demonstrate the inner bean
 
 	public Door getFrontDoorR() {
 		return frontDoorR;
@@ -67,18 +49,6 @@ public class Car {
 		this.rearDoorL = rearDoorL;
 	}
 
-
-	public AutoStarter getAutoStarter() {
-		return autoStarter;
-	}
-
-
-	public void setAutoStarter(AutoStarter autoStarter) {
-		this.autoStarter = autoStarter;
-	}
-
-
-
 	public void getCarInfo()
 	{
 		getFrontDoorR().getDoorInfo();
@@ -89,7 +59,6 @@ public class Car {
 		System.out.println();
 		getRearDoorL().getDoorInfo();
 		System.out.println();
-		getAutoStarter().getRangeInfo();
 	}
 
 }
