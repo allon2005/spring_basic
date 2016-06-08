@@ -1,10 +1,11 @@
 package springBasic3;
 
-class Wheel {
-	private String brand;
+class Tire {
+
+    private String brand;
 	private String size;
 	private int serialNum;
-	
+
 	public int getSerialNum() {
 		return serialNum;
 	}
@@ -23,12 +24,13 @@ class Wheel {
 	public void setSize(String size) {
 		this.size = size;
 	}
-	
-	public void getWheelInfo()
+
+	public void getTireInfo()
 	{
-		System.out.println("The wheel brand is: " + getBrand());
-		System.out.println("The wheel size is: " + getSize());
-		System.out.println("The wheel serial number is: " + getSerialNum());
+		System.out.println("The tire brand is: " + getBrand());
+		System.out.println("The tire size is: " + getSize());
+		System.out.println("The tire serial number is: " + getSerialNum());
 	}
 
 }
+

@@ -1,34 +1,56 @@
 package springBasic3;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /*
- * Dependency injection of collections (list, map, set). Use "list" as example
+ * Dependency injection of collections (list, map, set). 
  */
 public class Car {
 
-	
-	private List<Wheel> wheelList; 
+	private Set accessorySet;
+	private Map colorMap;
+	private List<Tire> tireList; 
 
-	public List<Wheel> getWheelList() {
-		return wheelList;
+	public Map getColorMap() {
+		return colorMap;
+	}
+	public void setColorMap(Map colorMap) {
+		this.colorMap = colorMap;
+	}
+	public Set getAccessorySet() {
+		return accessorySet;
+	}
+	public void setAccessorySet(Set accessorySet) {
+		this.accessorySet = accessorySet;
 	}
 
-	public void setWheelList(List<Wheel> wheelList) {
-		this.wheelList = wheelList;
+	public List<Tire> getTireList() {
+		return tireList;
 	}
-	
+	public void setTireList(List<Tire> tireList) {
+		this.tireList = tireList;
+	}
 
 	public void getCarInfo()
 	{
-		for (Wheel whl : getWheelList())
+		for(Tire whl : getTireList())
 		{
-			whl.getWheelInfo();
+			whl.getTireInfo();
 			System.out.println();
 		}
-		
-		
-		
-	}
 
+		for(Object key : getColorMap().keySet()) //since no type defined in map declaration, we have to use "Object" as key
+		{
+			System.out.println("the " +key + "'s color is " + getColorMap().get(key) );
+		}
+
+		System.out.println();
+
+		for(Object key : getAccessorySet()) //since no type defined in map declaration, we have to use "Object" as key
+		{
+			System.out.println("The car has the accessory: " +key );
+		}
+	}
 }

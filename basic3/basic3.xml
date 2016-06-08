@@ -7,12 +7,28 @@
 
 
 	<bean id="car" class="springBasic3.Car">
-		<property name="wheelList">
+	 <property name="colorMap">
+	  <map>
+	  <entry key="chair" value="tan1"/>  <!-- the key is arbitrary. All will be treated as String (or Object) -->
+	  <entry key="outer" value="silver"/>
+	  </map>
+	 </property>
+	 
+	 <property name="accessorySet">
+	 <set>
+	 <value> HandBook</value>   <!--  for set value, no need to use "" -->
+	 <value> Jump Cable</value>
+	 <value> Wrach</value>
+	 </set>
+	 
+	 </property>
+	
+		<property name="tireList">
 			<list>
-				<ref bean="wheel1" />
-				<ref bean="wheel2" />
-				<ref bean="wheel3" />
-				<ref bean="wheel4" />
+				<ref bean="tire1" />
+				<ref bean="tire2" />
+				<ref bean="tire3" />
+				<ref bean="tire4" />
 			</list>
 		</property>
 		<!-- - inside the list, we can have as many "ref" as we can. They will 
@@ -20,25 +36,25 @@
 
 	</bean>
 
-	<bean name="wheel1" class="springBasic3.Wheel">
+	<bean name="tire1" class="springBasic3.Tire">
 		<property name="serialNum" value="1" />
 		<property name="brand" value="bridgeStone" />
 		<property name="size" value="6225/70R14" />
 	</bean>
 
-	<bean name="wheel2" class="springBasic3.Wheel">
+	<bean name="tire2" class="springBasic3.Tire">
 		<property name="serialNum" value="2" />
 		<property name="brand" value="bridgeStone" />
 		<property name="size" value="6225/70R14" />
 	</bean>
 
-	<bean name="wheel3" class="springBasic3.Wheel">
+	<bean name="tire3" class="springBasic3.Tire">
 		<property name="serialNum" value="3" />
 		<property name="brand" value="bridgeStone" />
 		<property name="size" value="6225/70R14" />
 	</bean>
 
-	<bean name="wheel4" class="springBasic3.Wheel">
+	<bean name="tire4" class="springBasic3.Tire">
 		<property name="serialNum" value="4" />
 		<property name="brand" value="bridgeStone" />
 		<property name="size" value="6225/70R14" />
