@@ -1,6 +1,6 @@
-package springBasic2;
+package springBasic7;
 
-class Door {
+public class Door {
 	private String type; //front, back, driver-side, or passenger-side
 	private String color;
 	private float weight;

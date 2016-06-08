@@ -7,7 +7,7 @@ import java.util.Set;
 /*
  * Dependency injection of collections (list, map, set). 
  */
-public class Car {
+class Car {
 
 	private Set accessorySet;
 	private Map colorMap;

@@ -2,7 +2,7 @@ package springBasic4;
 /*
  * autowire by type
  */
-public class CarA {
+class CarA {
 
 	private AutoStarter autoStarter; 
 

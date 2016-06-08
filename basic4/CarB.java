@@ -2,7 +2,7 @@ package springBasic4;
 /*
  * autowire by constructor
  */
-public class CarB {
+class CarB {
 
 	private AutoStarterB autoStarterB; 
 

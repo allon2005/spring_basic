@@ -1,6 +1,6 @@
 package springBasic4;
 
-public class Door {
+class Door {
 	private String type; //front, back, driver-side, or passenger-side
 	private String color;
 	private float weight;

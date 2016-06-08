@@ -2,12 +2,19 @@ package springBasic2;
 /*
  * Dependency injection of object
  */
-public class Car {
+class Car {
 
 	/* we say that "car" is dependent on "Door" -->this is for object
 	 * we inject the "Door" object value through the xml file
 	 */
 	private String idrefCheck; //the only purpose of this string is to pass "idref"
+
+	private Door frontDoorR; 
+	private Door rearDoorR;   
+	private Door frontDoorL; 
+	private Door rearDoorL; 
+
+	private AutoStarter autoStarter;  //to demonstrate the inner bean
 
 	public String getIdrefCheck() {
 		return idrefCheck;
@@ -17,16 +24,6 @@ public class Car {
 	public void setIdrefCheck(String idrefCheck) {
 		this.idrefCheck = idrefCheck;
 	}
-
-
-
-	private Door frontDoorR; 
-	private Door rearDoorR;   
-
-	private Door frontDoorL; 
-	private Door rearDoorL; 
-
-	private AutoStarter autoStarter;  //to demonstrate the inner bean
 
 	public Door getFrontDoorR() {
 		return frontDoorR;

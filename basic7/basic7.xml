@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="car" class="springBasic7.Car">
+		<property name="frontDoorR" ref="frontDoorR" />
+		<property name="rearDoorR" ref="rearDoorR" />
+        <property name="frontDoorL" ref="frontDoorL" />
+        <property name="rearDoorL" ref="rearDoorL" />
+		
+	</bean>
+
+	<bean id="frontDoorR" class="springBasic7.Door">
+		<property name="type" value="front passenger door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="210.0" />
+	</bean>
+
+	<bean id="rearDoorR" class="springBasic7.Door">
+		<property name="type" value="rear right door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="250.0" />
+	</bean>
+
+	<bean id="frontDoorL" class="springBasic7.Door">
+		<property name="type" value="front driver door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="210.0" />
+	</bean>
+
+	<bean id="rearDoorL" class="springBasic7.Door">
+		<property name="type" value="rear left door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="250.0" />
+	</bean>
+
+</beans>
+
+<!-- 
+1. if the type of "car" is "singleton", we will only have one copy of each "door" bean when BeanFactory initialized 
+even though we set the type of each "XXDoor?" bean as "prototype". THis is because BeanFactory only initializes
+the "car" bean and the contained "door" beans once.
+
+2. if we want to get new instance of "door" bean. We need to access "applicationContext" in the "Car.java" class, which
+can then use the applicationContext to get new instance of "door" bean. ===> so, it gets down to next layer!!!
+
+
+ -->
+
+
+

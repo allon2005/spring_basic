@@ -1,14 +1,34 @@
-package springBasic4;
+package springBasic7;
+
 /*
- * autowire
+ * access applicationContext in other class than "MakingCar.java"
  */
-class Car {
+
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
+
+class Car implements ApplicationContextAware {
 
 	private Door frontDoorR; 
 	private Door rearDoorR;   
 
 	private Door frontDoorL; 
 	private Door rearDoorL; 
+	
+	private ApplicationContext context = null;
+
+
+	public ApplicationContext getContext() {
+		return context;
+	}
+
+/*  we already have an overide method for this, no need for this
+	public void setContext(ApplicationContext context) {
+		this.context = context;
+	}
+*/
 
 	public Door getFrontDoorR() {
 		return frontDoorR;
@@ -49,6 +69,11 @@ class Car {
 		this.rearDoorL = rearDoorL;
 	}
 
+	@Override
+	public void setApplicationContext(ApplicationContext context) throws BeansException {
+		this.context = context;  //so, this is a setter for "context" variable. During BeanFactory initialization, the context itself will be injected into "Car.java"
+	}
+
 	public void getCarInfo()
 	{
 		getFrontDoorR().getDoorInfo();
@@ -62,9 +87,5 @@ class Car {
 	}
 
 }
-// use setter or constructor to instantiate a class variable.
-/*
-if we have both constructor and setter in the class, both of them will be executed. The constructor
-will always be executed before the setter no matter the order in this class and the order in xml file
-in the class ===>so, the final value for "weight" is using the value from the setter!!!
- */
+
+// see more on: http://stackoverflow.com/questions/21553120/how-does-applicationcontextaware-work-in-spring

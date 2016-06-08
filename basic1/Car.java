@@ -2,7 +2,7 @@ package springBasic1;
 /*
  *Dependency injection of primitives 
  */
-public class Car {
+class Car {
 	/* we can say that "car" is dependent on "weight" -->this is for primitive
 	 * we inject the "weight" value through the xml file
 	 */

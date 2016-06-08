@@ -2,7 +2,7 @@ package springBasic5;
 /*
  * bean Scope: singleton, prototype
  */
-public class Car {
+class Car {
 
 	
 	private Door frontDoorR; 
