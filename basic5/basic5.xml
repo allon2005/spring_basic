@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="car" class="springBasic5.Car" scope="singleton"> <!-- -singleton is the default scope -->
+		<property name="frontDoorR" ref="frontDoorR" />
+	</bean>
+	
+	<bean id="car1" class="springBasic5.Car" scope="prototype"> 
+		
+	</bean>
+	
+	<bean id="frontDoorR" class="springBasic5.Door">
+		<property name="type" value="front passenger door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="210.0" />
+	</bean>
+</beans>
+
+
+
+
+
+
