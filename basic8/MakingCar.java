@@ -59,6 +59,14 @@ public class MakingCar {
 
 		newCar2 = null;
 		context2.close(); 
+		
+		AbstractApplicationContext context3 = new ClassPathXmlApplicationContext("springBasic8/basic8b.xml"); 
+		context3.registerShutdownHook(); 
+		Car2 newCar3 = (Car2)context3.getBean("car2");
+		newCar3.getCarInfo();
+
+		newCar3 = null;
+		context3.close(); 
 
 
 	}

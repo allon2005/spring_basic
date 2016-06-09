@@ -1,11 +1,13 @@
 package springBasic8;
 
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 
 /*
- * bean life call back by configuring xml file, not implementing interfaces
+ * bean life call back by configuring xml file and implementing interfaces
  */
 
-class Car1{
+class Car2 implements InitializingBean, DisposableBean{
 
 	private Door frontDoorR; 
 	private Door rearDoorR;   
@@ -80,15 +82,25 @@ class Car1{
 	}
 
 
+	@Override
+	public void destroy() throws Exception {
+		System.out.println("*** car1 bean was destroied by interface");
+		
+	}
+
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("^^^ car2 bean was initialized by interface");
+		
+	}
+
+
 }
 
-/*implementing InitializingBean and DisposableBean is specialized to spring framework. If this class is not used
- * in spring framework, we will have issue or have to set up all spring framework lib in that environment.
- * 
- * 
- * configuring xml file is more general. No need to implement the interfaces and not limited to spring framework
- *
- *
+/* *
  *!!!we can have both "implementing InitializingBean and DisposableBean interfaces and "xml configuration" for init/shutdown
- */
+ * The interface mechanism will take priority and will run first, then the xml configured methods. 
+
+*/
 

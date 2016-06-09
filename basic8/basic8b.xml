@@ -12,7 +12,7 @@
 	  
 
 	
-	<bean id="car1" class="springBasic8.Car1" init-method="customInit" destroy-method="customDestroy">
+	<bean id="car2" class="springBasic8.Car2" init-method="customInit" destroy-method="customDestroy">
 		<property name="frontDoorR" ref="frontDoorR" />
 		<property name="rearDoorR" ref="rearDoorR" />
         <property name="frontDoorL" ref="frontDoorL" />
