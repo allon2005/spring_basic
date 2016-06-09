@@ -1,14 +1,11 @@
 package springBasic8;
 
+
 /*
- * bean life call back by implementing interface InitializingBean, DisposableBean
+ * bean life call back by configuring xml file, not implementing interfaces
  */
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
-
-
-class Car implements InitializingBean, DisposableBean {  // implements two interfaces for bean initialization and destroying
+class Car1{
 
 	private Door frontDoorR; 
 	private Door rearDoorR;   
@@ -69,24 +66,26 @@ class Car implements InitializingBean, DisposableBean {  // implements two inter
 	}
 
 
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		System.out.println("^^^ car bean was initialized");
+	
+	public void customInit() throws Exception {
+		System.out.println("^^^ car1 bean was initialized");
 
 	}
 
 
-	@Override
-	public void destroy() throws Exception {
-		System.out.println("*** car bean was destroied");
+	
+	public void customDestroy() throws Exception {
+		System.out.println("*** car1 bean was destroied");
 
 	}
 
 
 }
 
-/*by implementing InitializingBean and DisposableBean, Spring provide some flow control. We can perform certain
- * actions right after the bean is initialized (but not being returned yet) or after the bean is destroyed.
+/*implementing InitializingBean and DisposableBean is specialized to spring framework. If this class is not used
+ * in spring framework, we will have issue or have to set up all spring framework lib in that environment.
  * 
+ * 
+ * configuring xml file is more general. No need to implement the interfaces and not limited to spring framework
  */
 

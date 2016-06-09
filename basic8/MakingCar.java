@@ -44,6 +44,21 @@ public class MakingCar {
 
 		newCar1 = null;
 		context1.close(); //can directly use "context1.close()".
+		
+		
+		/****************************/
+		
+		/* xml file was configured to have init and destroy method
+		 * 
+		 */
+		
+		AbstractApplicationContext context2 = new ClassPathXmlApplicationContext("springBasic8/basic8a.xml"); 
+		context2.registerShutdownHook(); 
+		Car1 newCar2 = (Car1)context2.getBean("car1");
+		newCar2.getCarInfo();
+
+		newCar2 = null;
+		context2.close(); 
 
 
 	}
