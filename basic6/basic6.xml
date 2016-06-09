@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="car" class="springBasic6.Car">
+		<property name="frontDoorR" ref="frontDoorR" />
+		<property name="rearDoorR" ref="rearDoorR" />
+		<property name="frontDoorL" ref="frontDoorL" />
+		<property name="rearDoorL" ref="rearDoorL" />
+
+	</bean>
+
+	<bean id="subCar1" class="springBasic6.Car" parent="car">
+		<property name="frontDoorR" ref="frontDoorR" />
+		<property name="rearDoorR">                  <!-- override the inherited property  -->
+			<bean class="springBasic6.Door">
+				<property name="type" value="rear right door" />
+				<property name="color" value="Maroon" />
+				<property name="weight" value="250.0" />
+			</bean>
+		</property>
+
+
+	</bean>
+
+	<bean id="subCar2" class="springBasic6.Car" parent="subCar1">
+         <!-- subCar2 will inherit all properties from subCar2-->
+	</bean>
+
+
+
+	<bean id="frontDoorR" class="springBasic6.Door">
+		<property name="type" value="front passenger door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="210.0" />
+	</bean>
+
+	<bean id="rearDoorR" class="springBasic6.Door">
+		<property name="type" value="rear right door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="250.0" />
+	</bean>
+
+	<bean id="frontDoorL" class="springBasic6.Door">
+		<property name="type" value="front driver door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="210.0" />
+	</bean>
+
+	<bean id="rearDoorL" class="springBasic6.Door">
+		<property name="type" value="rear left door" />
+		<property name="color" value="grey" />
+		<property name="weight" value="250.0" />
+	</bean>
+
+</beans>
+
+<!-- 
+1. "subCar1" only defines two properties. However, it will inherit all the properties from its parent bean "car".
+
+2. "subCar1" inherit all the properties from "car". We can also override any of the inherited property.
+
+3. "subCar2" has nothing defined. But, it will get all the properties from its parent bean "subCar1".
+
+-->
+
+
+
